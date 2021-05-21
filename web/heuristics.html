@@ -31,7 +31,7 @@
 					    <label>Bin Packing</label>
 					</li>
 					<li class="nav-item">
-					    <a href="home.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Home</span></a>
+					    <a href="index.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Home</span></a>
 					</li>
 					
 					<li class="nav-item pcoded-menu-caption">
@@ -124,7 +124,7 @@
                             <h5 class="m-b-10">Heuristiques</h5>
                         </div>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="home.html"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="#!">Heuristiques</a></li>
                         </ul>
                     </div>
@@ -140,7 +140,7 @@
                         <h5>Les objets</h5>
                     </div>
                     <div class="card-body table-border-style"> 
-                        <div class="table-responsive objects">
+                        <div class="table-responsive objects" style="height: 792px;">
                             <table class="table table-hover"  >
                                 <thead>
                                     <tr>
@@ -162,14 +162,12 @@
             <div class="col-md-9">
 				<div class="card">
 					<div class="card-header d-flex justify-content-between">
-                        <h5 class="mt-2">Ajouter une instance </h5>
-                        <div class="input-group cust-file-button mb-3">
-                            
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="inputGroupFile03" onchange="loadFile(this.files[0])">
-                                <label class="custom-file-label" for="inputGroupFile03" onclick="displayfilename()">Choose file</label>
-                            </div>
+                        <h5 class="mt-2">Ajouter une instance </h5>   
+                        <div class="custom-file col-sm-8">
+                            <input type="file" class="custom-file-input" id="inputGroupFile03" onchange="loadFile(this.files[0])">
+                            <label class="custom-file-label" for="inputGroupFile03" onclick="displayfilename()">Choose file</label>
                         </div>
+                      
 					</div>
                     <div class="card-body table-border-style">
                         <div class="table-responsive">
@@ -189,141 +187,66 @@
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>	
+                        <div class="card-body d-flex justify-content-center">
+                            <button type="button" class="btn  btn-success col-sm-6" id="btn_heuris" onclick="heurisjs()" >Résoudre le probléme </button>
                         </div>		
-								</table>
-							</div>
-							
+					</div>		
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Solution Heuristiques </h5>
                     </div>
-					<div class="card-body d-flex justify-content-center">
-						<button type="button" class="btn  btn-success col-sm-6" id="btn_run_hr" onclick="heurisjs()" >Résoudre le probléme </button>
-                        <script>var capacite = 0 ; 
-                            var items = [] ; 
-                            var nombre_items = 0 ; 
-                            var solution = [] ; 
-                            
-                            async function loadFile(file) {
-                                let text = await (new Response(file)).text();
-                                var list= text.split('\n') ;
-                                var list = list.map(function (x) { return parseInt(x); });
-                                capacite =  list[1]  ; 
-                                nombre_items = list[0] ; 
-                                items = list.slice(2 , list[0]+2 ) ;
-                                var objets = $(".body_objets")[0] ; 
-                                var nb = $("#NB")[0] ; 
-                                var c = $("#capacite")[0] ; 
-                                var poids = $("#Poids")[0] ; 
-                            
-                                poids.innerHTML = Math.min (...items) + " < p < " + Math.max (...items) ; 
-                                c.innerHTML = capacite ; 
-                                nb.innerHTML = nombre_items ; 
-                                for(var i = 0 ; i <items.length ; i++) {
-                                    var tr = document.createElement('tr') ; 
-                                    tr.innerHTML=" <td> " +i + " </td> <td> " + items[i]+ "</td>" ; 
-                                    objets.append (tr) ; 
-                                }
-                             
-                                //document.getElementById("sol_bins1").innerHTML = "" ; 
-                                //document.getElementById("time1").innerHTML ="" ; 
-                                //document.getElementById("sol_bins2").innerHTML = "" ; 
-                                //document.getElementById("time2").innerHTML ="" ; 
-                            
-                            }
-                            function heurisjs(){
-                                eel.ffd_py(capacite,items);
-                                eel.ffi_py(capacite,items);
-                                eel.bf_py(capacite,items);
-                                eel.wf_py(capacite,items);
-                                eel.awf_py(capacite,items);
-                                eel.nf_py(capacite,items);
-
-                            }
-                            
-                            eel.expose(jsaffich); // Expose this function to Python
-                            function jsaffich(a,t) {
-                               // document.getElementById("sol_bins1").innerHTML = a ; 
-                               // document.getElementById("time1").innerHTML = t + " secondes" ;
-
-                                //document.getElementById("sol_bins2").innerHTML = a ; 
-                                //document.getElementById("time2").innerHTML = t + " secondes" ;
-                            }
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                                  
-                                 
-                                            </script>
-                    </div>
-                    <!--*****************-->
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5>Solution Heuristiques </h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive ">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th >Heuristique </th>
-                                                <th >Nombre des bins</th>
-                                                <th>Temps d'exécution</th>
+                    <div class="card-body">
+                        <div class="table-responsive ">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th >Heuristique </th>
+                                        <th >Nombre des bins</th>
+                                        <th>Temps d'exécution</th>
                                                 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr id="sol1">
-                                                <td>FFD</td>  
-                                                <td id="sol_bins1"></td>
-                                                <td id="time1"></td>    
-                                            </tr>
-                                            <tr id="sol2">
-                                                <td>FFI</td>  
-                                                <td id="sol_bins2"></td>
-                                                <td id="time2"></td>    
-                                            </tr>
-                                            <tr id="sol3">
-                                                <td>BF</td>  
-                                                <td id="sol_bins3"></td>
-                                                <td id="time3"></td>    
-                                            </tr>
-                                            <tr id="sol4">
-                                                <td>WF</td>  
-                                                <td id="sol_bins4"></td>
-                                                <td id="time4"></td>    
-                                            </tr>
-                                            <tr id="sol5">
-                                                <td>AWF</td>  
-                                                <td id="sol_bins5"></td>
-                                                <td id="time5"></td>    
-                                            </tr>
-                                            <tr id="sol6">
-                                                <td>NF</td>  
-                                                <td id="sol_bins6"></td>
-                                                <td id="time6"></td>    
-                                            </tr>
-                                        </tbody>   
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="card-footer "></div>
+                                    </tr>
+                                 </thead>
+                                <tbody>
+                                    <tr id="sol1">
+                                        <td>FFD</td>  
+                                        <td id="sol_bins1"></td>
+                                        <td id="time1"></td>                  
+                                    </tr>
+                                    <tr id="sol2">
+                                        <td>FFI</td>  
+                                        <td id="sol_bins2"></td>
+                                        <td id="time2"></td>    
+                                    </tr>
+                                    <tr id="sol3">
+                                        <td>BF</td>  
+                                        <td id="sol_bins3"></td>
+                                        <td id="time3"></td>    
+                                    </tr>
+                                    <tr id="sol4">
+                                        <td>WF</td>  
+                                        <td id="sol_bins4"></td>
+                                        <td id="time4"></td>    
+                                    </tr>
+                                    <tr id="sol5">
+                                        <td>AWF</td>  
+                                        <td id="sol_bins5"></td>
+                                        <td id="time5"></td>    
+                                    </tr>
+                                    <tr id="sol6">
+                                        <td>NF</td>  
+                                        <td id="sol_bins6"></td>
+                                        <td id="time6"></td>    
+                                    </tr>
+                                </tbody>   
+                            </table>
                         </div>
                     </div>
-                </div>
-                    <!--*****************-->
-                    
-                </div>     
-            </div>
-            
-        <!-- [ Main Content ] end -->
+                    <div class="card-footer "></div>
+                </div>  
+            </div>   
+        </div>
     </div>
 </div>
 
@@ -333,9 +256,7 @@
     <script src="assets/js/ripple.js"></script>
     <script src="assets/js/pcoded.min.js"></script>
 	<script src="assets/js/hr.js"></script>
-    
-
-<!-- Apex Chart -->
+   
 <script src="assets/js/plugins/apexcharts.min.js"></script>
 
 

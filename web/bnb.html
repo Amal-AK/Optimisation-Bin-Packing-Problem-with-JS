@@ -30,7 +30,7 @@
 					    <label>Bin Packing</label>
 					</li>
 					<li class="nav-item">
-					    <a href="home.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Home</span></a>
+					    <a href="index.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Home</span></a>
 					</li>
 					
 					<li class="nav-item pcoded-menu-caption">
@@ -102,10 +102,7 @@
 							</div>
 						</li>
 					</ul>
-				
 				</div>
-				
-			
 	</header>
 	<!-- [ Header ] end -->
 	
@@ -123,7 +120,7 @@
                             <h5 class="m-b-10">Methodes exactes</h5>
                         </div>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="home.html"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="#!">Branch & Bound</a></li>
                         </ul>
                     </div>
@@ -139,7 +136,7 @@
                         <h5>Les objets</h5>
                     </div>
                     <div class="card-body table-border-style"> 
-                        <div class="table-responsive objects">
+                        <div class="table-responsive objects" style="height: 495px;">
                             <table class="table table-hover"  >
                                 <thead>
                                     <tr>
@@ -162,8 +159,11 @@
 				<div class="card">
 					<div class="card-header d-flex justify-content-between">
                         <h5 class="mt-2">Ajouter une instance </h5>
-					
-						<input type="file" class="col-sm-6" size="60" id="instance" onchange="loadFile(this.files[0])">
+                        <div class="custom-file col-sm-8">
+                            <input type="file" class="custom-file-input" id="inputGroupFile03" onchange="loadFile(this.files[0])">
+                            <label class="custom-file-label" for="inputGroupFile03" onclick="displayfilename()">Choose file</label>
+                        </div>
+						
 					
 					</div>
                     <div class="card-body table-border-style">
@@ -184,17 +184,15 @@
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="card-body d-flex justify-content-center">
+                            <button type="button" class="btn  btn-info col-sm-6" id="btn_run_b&b" onclick="" >Résoudre le probléme </button>
+                                
                         </div>		
-								</table>
-							</div>
-							
-                    </div>
-					<div class="card-body d-flex justify-content-center">
-						<button type="button" class="btn  btn-success col-sm-6" id="btn_run_RS" onclick="run_recuit_simule()" >Résoudre le probléme </button>
-					    
-                    </div>
+					</div>
+                </div>
+				
                     <!--*****************-->
-                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
                                 <h5>Solution Branch and Bound </h5>
@@ -229,7 +227,7 @@
                             </div>
                             <div class="card-footer "></div>
                         </div>
-                    </div>
+                  
                 </div>
                     <!--*****************-->
                 </div>     
@@ -244,7 +242,7 @@
     <script src="assets/js/plugins/bootstrap.min.js"></script>
     <script src="assets/js/ripple.js"></script>
     <script src="assets/js/pcoded.min.js"></script>
-	<script src="assets/js/scripts.js"></script>
+	<script src="assets/js/load.js"></script>
 
 <!-- Apex Chart -->
 <script src="assets/js/plugins/apexcharts.min.js"></script>

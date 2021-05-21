@@ -28,6 +28,8 @@ async function loadFile(file) {
     document.getElementById("time1").innerHTML ="" ; 
 
 }
+
+
 function ffdjs(){
     eel.ffd_py(capacite,items);
 }
@@ -38,7 +40,25 @@ function jsaffich(a,t) {
     document.getElementById("time1").innerHTML = t + " secondes" ;
 }
 
+function heurisjs(){
+    alert('hi') ; 
+    eel.ffd_py(capacite,items);
+    eel.ffi_py(capacite,items);
+    eel.bf_py(capacite,items);
+    eel.wf_py(capacite,items);
+    eel.awf_py(capacite,items);
+    eel.nf_py(capacite,items);
 
+}
+
+eel.expose(jsaffich); // Expose this function to Python
+function jsaffich(a,t) {
+   // document.getElementById("sol_bins1").innerHTML = a ; 
+   // document.getElementById("time1").innerHTML = t + " secondes" ;
+
+    //document.getElementById("sol_bins2").innerHTML = a ; 
+    //document.getElementById("time2").innerHTML = t + " secondes" ;
+}
 
 
 

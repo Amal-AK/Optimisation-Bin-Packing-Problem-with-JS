@@ -3,6 +3,8 @@ var items = [] ;
 var nombre_items = 0 ; 
 var solution = [] ; 
 
+
+
 async function loadFile(file) {
     let text = await (new Response(file)).text();
     var list= text.split('\n') ;
